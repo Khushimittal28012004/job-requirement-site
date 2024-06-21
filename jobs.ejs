@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 40px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            background-color: #ffffff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #555555;
+        }
+        p strong {
+            color: #333333;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p em {
+            font-size: 14px;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <ul>
+        <% jobs.forEach(job => { %>
+            <li>
+                <h2><%= job.title %></h2>
+                <p><strong>Name:</strong> <%= job.name %></p>
+                <p><strong>Contact Number:</strong> <%= job.number %></p>
+                <p><strong>Email:</strong> <%= job.email %></p>
+                <p><%= job.description %></p>
+                <p><strong>Requirements:</strong> <%= job.requirements %></p>
+                <% if (job.resume) { %>
+                    <p><a href="/uploads/<%= job.resume %>" download>Download Resume</a></p>
+                <% } %>
+                <p><em>Posted on: <%= job.createdAt.toDateString() %></em></p>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
